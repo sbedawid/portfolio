@@ -1,56 +1,96 @@
-/* --- Base Magical Theme --- */
+/* --- Enchanted Mana Theme --- */
 body {
   font-family: "Poppins", sans-serif;
-  background: radial-gradient(circle at top, #f8e9ff 0%, #e4b6ff 40%, #c49fff 75%, #8a70ff 100%);
-  color: #2d143c;
+  background: radial-gradient(circle at top, #f5e4ff 0%, #d4b8ff 30%, #9f7fff 60%, #ff9ff3 100%);
+  color: #2b1140;
   margin: 0;
   padding: 0;
   line-height: 1.6;
   overflow-x: hidden;
-}
-
-/* --- Header --- */
-header {
-  text-align: center;
-  padding: 4rem 1rem 3rem;
-  background: linear-gradient(135deg, #b47fff, #ff9ff3);
-  color: white;
-  box-shadow: 0 0 30px rgba(255, 182, 255, 0.4);
   position: relative;
 }
 
-header::after {
+
+/* Floating sparkles ✨ */
+body::before {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 80%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.5);
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: sparkleMove 40s linear infinite;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+
+@keyframes sparkleMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* --- Header --- */
+
+header {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  background: linear-gradient(135deg, #b98fff, #ffafff, #8ec5ff);
+  color: white;
+  box-shadow: 0 0 40px rgba(200, 150, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 180deg, #ffe6ff, #b98fff, #8ec5ff, #ffe6ff);
+  animation: aura 12s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes aura {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 header h1 {
   font-family: "Josefin Sans", sans-serif;
-  font-size: 2.8rem;
+  font-size: 2.9rem;
   margin: 0.5rem 0;
-  letter-spacing: 1px;
-  text-shadow: 0 0 15px rgba(255, 200, 255, 0.8);
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 20px rgba(255, 220, 255, 0.9);
 }
 
 header p {
-  font-size: 1.1rem;
-  color: #ffeaff;
+  font-size: 1.15rem;
+  color: #ffe9ff;
 }
 
-/* --- Main Layout --- */
+/* --- Main --- */
 main {
   max-width: 900px;
   margin: 2.5rem auto;
   padding: 0 1rem;
 }
 
-/* --- Cards --- */
+/* --- Intro --- */
+.intro {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 1.6rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(200, 140, 255, 0.3);
+}
+
+/* --- Game Cards --- */
 .game {
   background: rgba(255, 255, 255, 0.5);
   padding: 1.8rem;
@@ -59,6 +99,7 @@ main {
   box-shadow: 0 6px 25px rgba(193, 136, 255, 0.3);
   backdrop-filter: blur(12px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .game:hover {
@@ -66,27 +107,37 @@ main {
   box-shadow: 0 8px 30px rgba(255, 150, 255, 0.6);
 }
 
+/* Floating shimmer inside cards */
+.game::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #ffafff, #b98fff, #8ec5ff, #ffafff);
+  opacity: 0.1;
+  animation: cardGlow 10s linear infinite;
+  border-radius: 18px;
+}
+
+@keyframes cardGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* --- Headings --- */
 h2 {
-  color: #7b3eff;
+  color: #b47fff;
   margin-top: 0;
   font-family: "Josefin Sans", sans-serif;
   text-shadow: 0 0 10px rgba(255, 240, 255, 0.6);
 }
 
-/* --- Intro Section --- */
-.intro {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.4);
-  padding: 1.6rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(200, 140, 255, 0.2);
-}
-
 /* --- Buttons --- */
 .download-btn {
   display: inline-block;
-  background: linear-gradient(90deg, #ff9ff3, #c77dff);
+  background: linear-gradient(90deg, #ff9ff3, #c77dff, #8ec5ff);
   color: #fff;
   padding: 0.8rem 1.6rem;
   border-radius: 12px;
