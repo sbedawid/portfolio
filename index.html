@@ -9,7 +9,29 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
+<script>
+function createSparkle() {
+  const sparkle = document.createElement("div");
+  sparkle.classList.add("sparkle");
 
+  sparkle.style.left = Math.random() * window.innerWidth + "px";
+  sparkle.style.top = window.innerHeight + "px";
+
+  const size = Math.random() * 4 + 2;
+  sparkle.style.width = size + "px";
+  sparkle.style.height = size + "px";
+
+  sparkle.style.animationDuration = (Math.random() * 5 + 4) + "s";
+
+  document.body.appendChild(sparkle);
+
+  setTimeout(() => {
+    sparkle.remove();
+  }, 9000);
+}
+
+setInterval(createSparkle, 150);
+</script>
 <body>
 
   <header>
