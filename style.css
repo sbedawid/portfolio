@@ -13,18 +13,41 @@ body {
 
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
-/* sparkle overlay */
+/* 🌟 FLOATING SPARKLES LAYER */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);
-  background-size: 80px 80px;
-  opacity: 0.2;
   pointer-events: none;
   z-index: 0;
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 2px);
+
+  background-size: 120px 120px, 200px 200px;
+  animation: sparkleMove 25s linear infinite;
+  opacity: 0.25;
+}
+
+/* ✨ EXTRA FLOATING ORBS */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.4) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.3) 0 3px, transparent 4px),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,0.35) 0 2px, transparent 3px);
+
+  animation: floatUp 18s ease-in-out infinite alternate;
 }
 
 /* HEADER */
@@ -34,7 +57,6 @@ header {
   background: linear-gradient(135deg, #b98fff, #ffafff, #8ec5ff);
   color: white;
   position: relative;
-  overflow: hidden;
   z-index: 1;
 }
 
@@ -96,8 +118,27 @@ footer {
   margin-top: auto;
 }
 
-/* FIXED fade-in (no broken comma) */
+/* NO BUG fade-in */
 .fade-in {
   opacity: 1;
   transform: none;
+}
+
+/* 🌠 ANIMATIONS */
+@keyframes sparkleMove {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-40px);
+  }
 }
