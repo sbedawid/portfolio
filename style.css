@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -10,10 +10,12 @@ body {
   background: radial-gradient(circle at top, #f5e4ff 0%, #d4b8ff 30%, #9f7fff 60%, #ff9ff3 100%);
   color: #2b1140;
   line-height: 1.6;
-  position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
-/* ✨ Sparkles (SAFE VERSION) */
+/* sparkle overlay */
 body::before {
   content: "";
   position: fixed;
@@ -51,6 +53,7 @@ main {
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem 2rem;
+  flex: 1;
   position: relative;
   z-index: 1;
 }
@@ -90,9 +93,10 @@ footer {
   padding: 1rem 0 2rem;
   font-size: 0.9rem;
   color: #5b2b72;
+  margin-top: auto;
 }
 
-/* FADE-IN (FORCED SAFE) */
+/* FIXED fade-in (no broken comma) */
 .fade-in {
   opacity: 1;
   transform: none;
