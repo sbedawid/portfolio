@@ -1,356 +1,99 @@
-/* --- Global --- */
-
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-
-  background:
-    radial-gradient(circle at top,
-    #f5e4ff 0%,
-    #d4b8ff 30%,
-    #9f7fff 60%,
-    #ff9ff3 100%);
-
+  background: radial-gradient(circle at top, #f5e4ff 0%, #d4b8ff 30%, #9f7fff 60%, #ff9ff3 100%);
   color: #2b1140;
-
   line-height: 1.6;
-
-  overflow-x: hidden;
-
   position: relative;
-
-  min-height: 100vh;
 }
 
-/* Floating sparkles ✨ */
-
+/* ✨ Sparkles (SAFE VERSION) */
 body::before {
   content: "";
-
   position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100vh;
-
-  background-image:
-    radial-gradient(
-      circle,
-      rgba(255,255,255,0.7) 1px,
-      transparent 1px
-    );
-
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);
   background-size: 80px 80px;
-
-  animation: sparkleMove 40s linear infinite;
-
+  opacity: 0.2;
   pointer-events: none;
-
-  opacity: 0.25;
-
-  z-index: -1;
+  z-index: 0;
 }
 
-@keyframes sparkleMove {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-1000px);
-  }
-}
-
-/* --- Header --- */
-
+/* HEADER */
 header {
   text-align: center;
-
   padding: 4rem 1rem 3rem;
-
-  background:
-    linear-gradient(
-      135deg,
-      #b98fff,
-      #ffafff,
-      #8ec5ff
-    );
-
+  background: linear-gradient(135deg, #b98fff, #ffafff, #8ec5ff);
   color: white;
-
-  box-shadow:
-    0 0 40px rgba(200, 150, 255, 0.5);
-
   position: relative;
-
   overflow: hidden;
-}
-
-header::before {
-  content: "";
-
-  position: absolute;
-
-  top: -50%;
-  left: -50%;
-
-  width: 200%;
-  height: 200%;
-
-  background:
-    conic-gradient(
-      from 180deg,
-      #ffe6ff,
-      #b98fff,
-      #8ec5ff,
-      #ffe6ff
-    );
-
-  animation: aura 12s linear infinite;
-
-  opacity: 0.2;
-}
-
-@keyframes aura {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  z-index: 1;
 }
 
 header h1 {
   font-family: "Josefin Sans", sans-serif;
-
   font-size: 2.9rem;
-
   margin: 0.5rem 0;
-
-  letter-spacing: 1.5px;
-
-  text-shadow:
-    0 0 20px rgba(255, 220, 255, 0.9);
 }
 
 header p {
-  font-size: 1.15rem;
-
   color: #ffe9ff;
 }
 
-/* --- Main --- */
-
+/* MAIN */
 main {
   max-width: 900px;
-
-  margin: 2.5rem auto;
-
+  margin: 2rem auto;
   padding: 0 1rem 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* --- Intro --- */
-
+/* INTRO */
 .intro {
   text-align: center;
-
   background: rgba(255, 255, 255, 0.45);
-
   padding: 1.6rem;
-
   border-radius: 14px;
-
-  box-shadow:
-    0 4px 20px rgba(200, 140, 255, 0.3);
-
   margin-bottom: 2rem;
 }
 
-/* --- Game Cards --- */
-
+/* GAME CARDS */
 .game {
   background: rgba(255, 255, 255, 0.5);
-
   padding: 1.8rem;
-
   border-radius: 18px;
-
-  margin-bottom: 2.5rem;
-
-  box-shadow:
-    0 6px 25px rgba(193, 136, 255, 0.3);
-
-  backdrop-filter: blur(12px);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-
-  position: relative;
-
-  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 25px rgba(193, 136, 255, 0.3);
 }
 
-.game:hover {
-  transform: translateY(-5px);
-
-  box-shadow:
-    0 8px 30px rgba(255, 150, 255, 0.6);
-}
-
-/* Floating shimmer */
-
-.game::before {
-  content: "";
-
-  position: absolute;
-
-  top: -50%;
-  left: -50%;
-
-  width: 200%;
-  height: 200%;
-
-  background:
-    conic-gradient(
-      from 0deg,
-      #ffafff,
-      #b98fff,
-      #8ec5ff,
-      #ffafff
-    );
-
-  opacity: 0.1;
-
-  animation: cardGlow 10s linear infinite;
-
-  border-radius: 18px;
-}
-
-@keyframes cardGlow {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* --- Text --- */
-
-h2 {
-  color: #b47fff;
-
-  margin-top: 0;
-
-  font-family: "Josefin Sans", sans-serif;
-
-  text-shadow:
-    0 0 10px rgba(255, 240, 255, 0.6);
-
-  position: relative;
-
-  z-index: 2;
-}
-
-.game p {
-  position: relative;
-  z-index: 2;
-}
-
-/* --- Buttons --- */
-
+/* BUTTONS */
 .download-btn {
   display: inline-block;
-
-  background:
-    linear-gradient(
-      90deg,
-      #ff9ff3,
-      #c77dff,
-      #8ec5ff
-    );
-
+  background: linear-gradient(90deg, #ff9ff3, #c77dff, #8ec5ff);
   color: white;
-
   padding: 0.8rem 1.6rem;
-
   border-radius: 12px;
-
   text-decoration: none;
-
   font-weight: 600;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.3s ease;
-
-  box-shadow:
-    0 0 15px rgba(255, 182, 255, 0.6);
-
-  position: relative;
-
-  z-index: 2;
 }
 
-.download-btn:hover {
-  transform: scale(1.07);
-
-  box-shadow:
-    0 0 25px rgba(255, 182, 255, 0.9);
-}
-
-/* --- Footer --- */
-
+/* FOOTER */
 footer {
   text-align: center;
-
   padding: 1rem 0 2rem;
-
   font-size: 0.9rem;
-
   color: #5b2b72;
 }
 
-footer a {
-  color: #a557ff;
-
-  text-decoration: none;
-
-  font-weight: 600;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* --- Fade Animations --- */
-
+/* FADE-IN (FORCED SAFE) */
 .fade-in {
-  opacity: 0;
-
-  transform: translateY(20px);
-
-  animation: fadeUp 1s ease forwards;
-}
-
-.fade-in.delay {
-  animation-delay: 0.4s;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
+  transform: none;
 }
